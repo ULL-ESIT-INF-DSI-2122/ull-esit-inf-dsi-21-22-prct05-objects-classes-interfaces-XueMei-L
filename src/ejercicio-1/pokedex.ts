@@ -40,4 +40,7 @@ export class Pokedex {
     getDefense() { return this.info[1]; }
     getSpeed() { return this.info[2]; }
     getHP() { return this.info[3]; }
+
+
+
 }

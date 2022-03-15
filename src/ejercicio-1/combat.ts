@@ -62,6 +62,20 @@ export class Combat {
         return damage_total;
     }
 
+    public start() {
+        console.log(`----------------Pokemon Game Start----------------`);
+        console.log(`Historia temporal: 
+        Después de salir el bosque negro, tú con tú pokemon "${this.pokemon1.getName()}" estáis yendo 
+        al camino No.1 para encontrar tu compañero, en este momento salio un nuevo pokemon 
+        "${this.pokemon2.getName()}"`);
 
+        console.log(`\n-------- Tu pokemon: --------`);
+        this.pokemon1.showPokemon();
+
+        console.log(`\n-------- Pokemon enemigo: --------`);
+        this.pokemon2.showPokemon();
+        
+        
+    }
 
 }
