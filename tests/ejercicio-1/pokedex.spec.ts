@@ -1,7 +1,6 @@
 import 'mocha';
 import { expect } from 'chai';
-import { Combat } from "../src/ejercicio-1/combat";
-import { Pokedex } from "../src/ejercicio-1/pokedex";
+import { Pokedex } from "../../src/ejercicio-1/pokedex";
 
 
 describe('Tests for POKEMON GAME', ()=>{
@@ -9,14 +8,8 @@ describe('Tests for POKEMON GAME', ()=>{
     const pikachu:Pokedex = new Pokedex("pikachu", 50, 45, "electric", [90, 55, 110, 60]);
     const charizard:Pokedex = new Pokedex("charizard", 60, 55, "fire", [84, 78, 100, 78]);
 
-    describe('Tests for the class Combat', () => {
-    
-        it('Existe una clase combat', () => {
-            expect(Combat).not.to.be.null;
-        });
-    });
-
     describe('Tests for the class Pokedex', () => {
+
         it('Existe una clase Pokedex', () => {
             expect(Pokedex).not.to.be.null;
         });
@@ -95,6 +88,5 @@ describe('Tests for POKEMON GAME', ()=>{
                 expect(charizard.getHP()).to.be.eq(78);
             });
         });
-        
     });
 });
