@@ -5,18 +5,9 @@
   "main": "index.js",
   "scripts": {
     "eje1": "tsc-watch --onSuccess \"node dist/ejercicio-1.js\"",
-    "eje2": "tsc-watch --onSuccess \"node dist/ejercicio-2.js\"",
-    "eje3": "tsc-watch --onSuccess \"node dist/ejercicio-3.js\"",
-    "eje4": "tsc-watch --onSuccess \"node dist/ejercicio-4.js\"",
-    "eje5": "tsc-watch --onSuccess \"node dist/ejercicio-5.js\"",
-    "eje6": "tsc-watch --onSuccess \"node dist/ejercicio-6.js\"",
-    "eje7": "tsc-watch --onSuccess \"node dist/ejercicio-7.js\"",
-    "eje8": "tsc-watch --onSuccess \"node dist/ejercicio-8.js\"",
-    "eje9": "tsc-watch --onSuccess \"node dist/ejercicio-9.js\"",
-    "eje10": "tsc-watch --onSuccess \"node dist/ejercicio-10.js\"",
-    "ejemod1": "tsc-watch --onSuccess \"node dist/mod-1.js\"",
-    "ejemod2": "tsc-watch --onSuccess \"node dist/mod-2.js\"",
-    "test": "mocha"
+    "test": "mocha",
+    "coverage":"nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output",
+    "doc": "typedoc;"
   },
   "keywords": [],
   "author": "",
@@ -27,8 +18,10 @@
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "chai": "^4.3.6",
+    "coveralls": "^3.1.1",
     "eslint": "^8.10.0",
     "mocha": "^9.2.1",
+    "nyc": "^15.1.0",
     "ts-node": "^10.7.0",
     "tsc-watch": "^4.6.0"
   },
