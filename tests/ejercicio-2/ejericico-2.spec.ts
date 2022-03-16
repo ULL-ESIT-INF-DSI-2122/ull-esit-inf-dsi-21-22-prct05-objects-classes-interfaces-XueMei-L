@@ -16,14 +16,14 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
             expect(grid).not.to.be.null;
         });
 
-        it('Existe un metodo en la clase Grid llamado showGrid()', () =>{
+        it('Existe un metodo en la clase Grid llamado showGrid()', () => {
             expect(grid.showGrid()).not.to.be.null;
         });
 
         
     });
 
-    describe('Tests for the class Player', () =>{
+    describe('Tests for the class Player', () => { 
 
         it('Nombre del jugador', () =>{
             expect(player1.getName()).to.eq("player01");
