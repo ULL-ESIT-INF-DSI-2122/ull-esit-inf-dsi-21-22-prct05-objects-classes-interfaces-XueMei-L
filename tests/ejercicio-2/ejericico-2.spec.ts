@@ -12,9 +12,9 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
 
     describe('Tests for the class Grid', () => {
 
-        // it('Existe una clase Grid', () => {
-        //     expect(grid).not.to.be.null;
-        // });
+        it('Existe una clase Grid', () => {
+            expect(grid).not.to.be.null;
+        });
 
         it('Existe un metodo en la clase Grid llamado showGrid()', () =>{
             expect(grid.showGrid()).not.to.be.null;
@@ -29,5 +29,11 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
             expect(player1.getName()).to.eq("player01");
             expect(player2.getName()).to.eq("player02");
         });
+
+        it('Numero de fichas para cada jugador es 21', () =>{
+            expect(player1.getNumFichas()).to.eq(21);
+            expect(player2.getNumFichas()).to.eq(21);
+        });
+
     });
 });
