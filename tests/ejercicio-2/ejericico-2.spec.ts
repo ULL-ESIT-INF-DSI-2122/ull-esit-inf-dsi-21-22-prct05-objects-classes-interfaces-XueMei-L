@@ -2,7 +2,7 @@ import 'mocha';
 import { expect } from 'chai';
 import { Grid } from "../../src/ejercicio-2/grid";
 import { Player } from "../../src/ejercicio-2/player";
-import { Conect4 } from "../../src/ejercicio-2/conect4";
+import { GameConect4 } from "../../src/ejercicio-2/conect4";
 
 describe('Tests for ejercicio-2 Conect 4', () =>{
 
@@ -11,7 +11,7 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
 
     const grid = new Grid();
 
-    const gameConect4 = new Conect4(player1, player2);
+    const GameConect = new GameConect4(player1, player2);
 
     describe('Tests for the class Grid', () => {
 
@@ -44,9 +44,11 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
     describe('Tests for the class Conect4', () => { 
 
         it('Nombre del jugador', () =>{
-            expect(gameConect4).not.to.be.null;
+            expect(GameConect).not.to.be.null;
         });
 
-
+        it('Proceso de juego', () =>{
+            expect(GameConect.GamePlayConect4()).not.to.be.null;
+        });
     });
 });

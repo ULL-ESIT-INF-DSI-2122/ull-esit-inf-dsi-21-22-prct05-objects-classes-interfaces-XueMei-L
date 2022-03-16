@@ -20,6 +20,3 @@ export class Grid {
         }
     }
 }
-
-let grid = new Grid();
-grid.showGrid();

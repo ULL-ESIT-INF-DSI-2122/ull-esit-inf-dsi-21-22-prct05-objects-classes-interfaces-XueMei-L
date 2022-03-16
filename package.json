@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "eje1": "tsc-watch --onSuccess \"node dist/ejercicio-1/ejercicio-1.js\"",
-    "eje2": "tsc-watch --onSuccess \"node dist/ejercicio-2/grid.js\"",
+    "eje2": "tsc-watch --onSuccess \"node dist/ejercicio-2/conect4.js\"",
     "test": "mocha",
     "coverage":"nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output",
     "doc": "typedoc;"
