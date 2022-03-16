@@ -35,10 +35,10 @@ export class Combat {
                     }
                 case "water":
                     if(pokemon_defender == "fire"){
-                        efectiveness = 2;
+                        efectiveness = 0.5;
                     }
                     if(pokemon_defender == "grass" || pokemon_defender == "electric"){
-                        efectiveness = 0.5;
+                        efectiveness = 2;
                     }
                 case "grass":
                     if(pokemon_defender == "fire"){
@@ -59,11 +59,11 @@ export class Combat {
         
         damage_total = 50 * ( attack / defense ) * efectiveness;
         
-        return damage_total;
+        return parseFloat(damage_total.toFixed(0));
     }
 
-    public start() {
-        console.log(`----------------Pokemon Game Start----------------`);
+    public start():string {
+        console.log(`----------------------------Pokemon Game Start----------------------------\n`);
         console.log(`Historia temporal: 
         Después de salir el bosque negro, tú con tú pokemon "${this.pokemon1.getName()}" estáis yendo 
         al camino No.1 para encontrar tu compañero, en este momento salio un nuevo pokemon 
@@ -75,7 +75,39 @@ export class Combat {
         console.log(`\n-------- Pokemon enemigo: --------`);
         this.pokemon2.showPokemon();
         
-        
-    }
+        console.log(`\n----------------------------Proceso de combate----------------------------\n`);
 
+        let pokemon1Hp:number = this.pokemon1.getHP();
+        let pokemon2Hp:number = this.pokemon2.getHP();
+        let round:number = 1;
+        
+        while (pokemon1Hp > 0 || pokemon2Hp > 0) {
+            let damage:number = 0;
+            console.log(`\n>> Round: ${round}`);
+                
+            if(round % 2 != 0) {
+                damage = this.pokemonGame(this.pokemon1.getType(), this.pokemon2.getType(), this.pokemon1.getAttack(), this.pokemon2.getDefense());
+                console.log(`>> Pokemon "${this.pokemon1.getName()}" ha realizado daño ` + damage + ` a "${this.pokemon2.getName()}"`);
+                pokemon2Hp -= damage;
+                console.log(`>> Pokemon atacador "${this.pokemon1.getName()}" queda ${pokemon1Hp} hp`);
+                console.log(`>> Pokemon defensor "${this.pokemon2.getName()}" queda ${pokemon2Hp} hp`);
+            }else{
+                damage = this.pokemonGame(this.pokemon2.getType(), this.pokemon1.getType(), this.pokemon2.getAttack(), this.pokemon1.getDefense());
+                console.log(`>> Pokemon "${this.pokemon2.getName()}" ha realizado daño ` + damage + ` a "${this.pokemon1.getName()}"`);
+                pokemon1Hp -= damage;
+                console.log(`>> Pokemon atacador "${this.pokemon2.getName()}" queda ${pokemon2Hp} hp`);
+                console.log(`>> Pokemon defensor "${this.pokemon1.getName()}" queda ${pokemon1Hp} hp`);
+            }
+            if(pokemon1Hp < 0) {
+                console.log(`\n>> Ganaste la batalla!! Puedes contener ${this.pokemon2.getName()} usando Poké Ball.`);
+                return this.pokemon1.getName();
+            }else if(pokemon2Hp < 0){
+                console.log(`\n>> Perdiste el combate, tu pokemon ${this.pokemon1.getName()} vuelve a su Poké Ball.`);
+                return this.pokemon2.getName();
+            }else {
+                round++;
+            }
+        }
+        return this.pokemon1.getName();
+    }
 }

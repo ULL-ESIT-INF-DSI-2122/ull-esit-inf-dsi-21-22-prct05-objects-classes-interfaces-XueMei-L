@@ -41,6 +41,17 @@ export class Pokedex {
     getSpeed() { return this.info[2]; }
     getHP() { return this.info[3]; }
 
+    setHp(Hp:number){ this.info[3] = Hp; }
 
-
+    public showPokemon(){
+        console.log(`>> Informacion de ` + this.getName() +
+                  `\n>> Tipo: ` + this.getType() + 
+                  `\n>> Peso: ` + this.getWeight() + 
+                  `\n>> Altura: ` + this.getHeight() +
+                  `\n>> HP: ` + this.getHP() +
+                  `\n>> Ataque: ` + this.getAttack() +
+                  `\n>> Defensa: ` + this.getDefense() +
+                  `\n>> Velocidad: ` + this.getSpeed()
+        );
+    }
 }
