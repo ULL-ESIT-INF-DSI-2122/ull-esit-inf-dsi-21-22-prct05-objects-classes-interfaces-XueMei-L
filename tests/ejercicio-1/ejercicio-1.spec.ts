@@ -18,13 +18,13 @@ describe('Tests for POKEMON GAME', ()=>{
         });
 
         it('Existe objetos instanciados de la clase Pokedex', () => {
-            expect(pikachu).not.to.be.null;
-            expect(charizard).not.to.be.null;
+            expect(pikachu).to.not.be.null;
+            expect(charizard).to.not.be.null;
         })
 
         it('Existe la funcion showPokemon()', () => {
-            expect(pikachu.showPokemon()).not.to.be.null.to.eq(true);
-            expect(charizard.showPokemon()).not.to.be.null.to.eq(true);
+            expect(pikachu.showPokemon()).to.not.be.null.to.eq(true);
+            expect(charizard.showPokemon()).to.not.be.null.to.eq(true);
         });
 
         describe('Tests para el objeto pikachu (class Pokedex)', () => {
@@ -96,8 +96,6 @@ describe('Tests for POKEMON GAME', ()=>{
                 expect(charizard.getHP()).to.be.eq(78);
             });
         });
-
-
 
         describe('Tests for the class Combat', () => {
         
