@@ -3,6 +3,8 @@ export class Grid {
     private rows:number = 6;
     private cols:number = 7;
     private grid:number[][] = [];
+    private saveLastPos = Array(7);
+    private countRound:number = 0;
 
     constructor() {
         for(let i: number = 0; i < this.rows; i++) {
@@ -13,10 +15,48 @@ export class Grid {
         }
     }
 
+    
     public showGrid() {
-        console.log(`--------------Mostrar Regilla--------------`)
+        console.log(`>> Mostrar Regilla`)
         for(var i: number = 0; i < this.rows; i++) {
             console.log(`${this.grid[i]}`);
+        }
+    }
+
+    public isValid(colums:number) :boolean {
+        if(this.grid[0][colums] == 0) {
+            return true;
+        }else{
+            console.log(`Error, ${colums} está completa`);
+            return false;
+        }
+    }
+
+    public SetPos(colums:number):number{
+        this.countRound++;
+            
+        //Obtener la i posicion que inserta el jugador
+        let getLastPosI = this.getLastPos(colums);
+
+        // impar toca el jugador 1 - par toca el jugador 2
+        if(this.countRound % 2 != 0) {
+            this.grid[getLastPosI][colums] = 1;
+        }else{
+            this.grid[getLastPosI][colums] = 2;
+        }
+
+        //Actualizar la ultima nueva posicion
+        this.saveLastPos[colums] = getLastPosI;
+        
+        //Retorna el ultimo movimiento (valor I)
+        return getLastPosI;
+    }
+
+    private getLastPos(colums:number):number {
+        if(this.saveLastPos[colums] == null) {
+            return 5;
+        }else{
+            return this.saveLastPos[colums]-1;
         }
     }
 }
