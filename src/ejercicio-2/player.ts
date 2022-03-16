@@ -7,5 +7,7 @@ export class Player {
     }
 
     getName() { return this.name; }
+    getNumFichas() { return this.numFichas; }
 
+    setNumFichas(numFichas:number) { this.numFichas = numFichas}
 }
