@@ -1,13 +1,16 @@
 import 'mocha';
 import { expect } from 'chai';
 import { Pokedex } from "../../src/ejercicio-1/pokedex";
+import { Combat } from '../../src/ejercicio-1/combat';
 
 
 describe('Tests for POKEMON GAME', ()=>{
-
+    
     const pikachu:Pokedex = new Pokedex("pikachu", 50, 45, "electric", [90, 55, 110, 60]);
     const charizard:Pokedex = new Pokedex("charizard", 60, 55, "fire", [84, 78, 100, 78]);
-
+    
+    let combat:Combat = new Combat(pikachu, charizard);
+    
     describe('Tests for the class Pokedex', () => {
 
         it('Existe una clase Pokedex', () => {
@@ -20,7 +23,8 @@ describe('Tests for POKEMON GAME', ()=>{
         })
 
         it('Existe la funcion showPokemon()', () => {
-            expect(pikachu.showPokemon()).not.to.be.null;
+            expect(pikachu.showPokemon()).not.to.be.null.to.eq(true);
+            expect(charizard.showPokemon()).not.to.be.null.to.eq(true);
         });
 
         describe('Tests para el objeto pikachu (class Pokedex)', () => {
@@ -90,6 +94,19 @@ describe('Tests for POKEMON GAME', ()=>{
 
             it('HP = 78', () => {
                 expect(charizard.getHP()).to.be.eq(78);
+            });
+        });
+
+
+
+        describe('Tests for the class Combat', () => {
+        
+            it('Existe una clase combat', () => {
+                expect(Combat).not.to.be.null;
+            });
+
+            it('Combate entre pikachu y charizard, gana pikachu', () => {
+                expect(combat.start()).to.be.equal("pikachu");
             });
         });
     });
