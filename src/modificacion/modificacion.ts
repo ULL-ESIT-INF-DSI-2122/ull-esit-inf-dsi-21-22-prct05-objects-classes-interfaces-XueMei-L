@@ -6,3 +6,8 @@ export class Hexadecimal {
     }
 
 }
+
+
+const myHexNumber = new Hexadecimal(38)
+myHexNumber.toString() // returns the string "0x26"
+myHexNumber.valueOf() // returns the number 38
