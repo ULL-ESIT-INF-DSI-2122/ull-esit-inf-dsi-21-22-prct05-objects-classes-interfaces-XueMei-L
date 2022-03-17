@@ -8,7 +8,7 @@
     "eje2": "tsc-watch --onSuccess \"node dist/ejercicio-2/conect4.js\"",
     "mod": "tsc-watch --onSuccess \"node dist/modificacion/modificacion.js\"",
     "test": "mocha",
-    "coverage":"nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output",
     "doc": "typedoc;"
   },
   "keywords": [],
