@@ -11,8 +11,4 @@ export class Player {
 
     setNumFichas(numFichas:number) { this.numFichas = numFichas}
 
-    public getRandom() {
-        const columnas = [0, 1, 2, 3, 4, 5, 6];
-        return Math.floor(Math.random() * columnas.length);
-    }
 }

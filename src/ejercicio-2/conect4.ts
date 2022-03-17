@@ -10,8 +10,13 @@ export class GameConect4 {
         this.player1 = jugador1;
         this.player2 = jugador2;
     }
+    
+    private getRandom() {
+        const columnas = [0, 1, 2, 3, 4, 5, 6];
+        return Math.floor(Math.random() * columnas.length);
+    }
 
-    public GamePlayConect4() {
+    public gamePlayConect4() {
         // Game start
         console.log(`-----------------Bienvenido al juego Conecta 4-----------------`); 
         grid.showGrid();
@@ -21,15 +26,19 @@ export class GameConect4 {
         
         while(round < 31 ) {
             console.log(`\n>> Rounda [${round}]`);
-            let colums:number = 0;
+            let colums:number = this.getRandom();
+            console.log(`columna: ${colums}`);
+
             if(round % 2 != 0) {
-                colums = this.player1.getRandom();
                 if(grid.isValid(colums)) {
                     console.log(`>> El jugador ${this.player1.getName()} pone una ficha en la columa ${colums+1}`);
                     console.log(`>> El jugador ${this.player1.getName()} queda ${this.player1.getNumFichas()} fichas.`);
                     // Insertar la posicion
-                    grid.SetPos(colums);
+                    grid.setPosAndGetI(colums);
 
+                    //Pasar la poscion actual para analizar
+                    this.gameWinner(colums, grid.getValueI());
+                    
                     // Disminuir el numero de fichas
                     this.player1.setNumFichas(this.player1.getNumFichas()-1);
                 }else{
@@ -39,13 +48,15 @@ export class GameConect4 {
                     round--;
                 }
             }else{
-                colums = this.player2.getRandom();
-                console.log(`columna: ${colums}`);
+
                 if(grid.isValid(colums)) {
                     console.log(`>> El jugador ${this.player2.getName()} pone una ficha en la columa ${colums+1}`);
                     console.log(`>> El jugador ${this.player2.getName()} queda ${this.player2.getNumFichas()} fichas.`);
                     // Insertar la posicion
-                    grid.SetPos(colums);
+                    grid.setPosAndGetI(colums);
+                    
+                    //Pasar la poscion actual para analizar
+                    this.gameWinner(colums, grid.getValueI());
 
                     // Disminuir el numero de fichas
                     this.player2.setNumFichas(this.player2.getNumFichas()-1);
@@ -58,28 +69,36 @@ export class GameConect4 {
                 }
             }        
             grid.showGrid();
-            gameFinish = true;
             round++;
         }
     }
 
-    private gameWinner(posActualI:number, posActualJ:number):string{
-        let count = 0;
-        for(var i:number = 0; i < grid.)
-
-
-        
-        if() {
-            return this.player1.getName();
-        }else{
-            return this.player2.getName();
-        }
-    }
+    public gameWinner(posActualI:number, posActualJ:number) {
+    // let findWinner:boolean = false;
     
-}
+    // for(let i:number = posActualI-1; i < posActualI+1; i++) {
+        //     for(let j:number = posActualJ-1; j < posActualJ+1; j++ ) {
+            
 
+            // if(typeof(grid.getGrid()[i][j]) == undefined || grid.getGrid()[i][j] == null) {
+                //     continue;
+                // }else if(grid.getGrid()[i][j] == grid.getGrid()[posActualI][posActualJ]) {
+                    //     let nextPosI = i - posActualI;
+                //     let nextPosJ = j - posActualJ;
+                //     if(grid.getGrid()[posActualI+nextPosI][posActualJ+nextPosJ] == undefined) {
+                    //         if(grid.getGrid()[posActualI+nextPosI*2][posActualJ+nextPosJ*2] !== null) {
+                //             findWinner = true;
+                //             console.log(`A partir de la posicion [${posActualI}][${posActualJ}] puede encontrar un camino con 4 valores iguales.`);
+                //         }
+                //     }
+                // }else{
+                //     continue;
+                // }
+    }
+}
+                
 let a:Player = new Player("Juan");
 let b:Player = new Player("Ana");
 let game = new GameConect4(a, b);
 let grid = new Grid();
-game.GamePlayConect4();
+game.gamePlayConect4();

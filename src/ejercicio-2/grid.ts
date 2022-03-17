@@ -5,6 +5,7 @@ export class Grid {
     private grid:number[][] = [];
     private saveLastPos = Array(7);
     private countRound:number = 0;
+    private ValueI:number = 0;
 
     constructor() {
         for(let i: number = 0; i < this.rows; i++) {
@@ -15,7 +16,11 @@ export class Grid {
         }
     }
 
-    
+    public getCols() { return this.cols; }
+    public getRows() { return this.rows; }
+    public getValueI() { return this.ValueI; }
+    public getGrid() { return this.grid; }
+
     public showGrid() {
         console.log(`>> Mostrar Regilla`)
         for(var i: number = 0; i < this.rows; i++) {
@@ -32,24 +37,22 @@ export class Grid {
         }
     }
 
-    public SetPos(colums:number):number{
+    public setPosAndGetI(colums:number) {
         this.countRound++;
             
         //Obtener la i posicion que inserta el jugador
-        let getLastPosI = this.getLastPos(colums);
+        const getLastPosI = this.getLastPos(colums);
 
+        this.ValueI = getLastPosI;
         // impar toca el jugador 1 - par toca el jugador 2
-        if(this.countRound % 2 != 0) {
-            this.grid[getLastPosI][colums] = 1;
-        }else{
-            this.grid[getLastPosI][colums] = 2;
-        }
+            if(this.countRound % 2 != 0) {
+                this.grid[getLastPosI][colums] = 1;
+            }else{
+                this.grid[getLastPosI][colums] = 2;
+            }
 
         //Actualizar la ultima nueva posicion
         this.saveLastPos[colums] = getLastPosI;
-        
-        //Retorna el ultimo movimiento (valor I)
-        return getLastPosI;
     }
 
     private getLastPos(colums:number):number {
