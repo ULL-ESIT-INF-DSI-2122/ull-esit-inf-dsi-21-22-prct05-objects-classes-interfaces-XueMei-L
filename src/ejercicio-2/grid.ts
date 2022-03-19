@@ -7,13 +7,25 @@ export class Grid {
     private countRound:number = 0;
     private ValueI:number = 0;
 
+    // constructor() {
+    //     for(let i: number = 0; i < this.rows; i++) {
+    //         this.grid[i] = [];
+    //         for(let j: number = 0; j < this.cols; j++) {
+    //             this.grid[i].push(0);
+    //         }
+    //     }
+    // }
+
+
     constructor() {
-        for(let i: number = 0; i < this.rows; i++) {
-            this.grid[i] = [];
-            for(let j: number = 0; j < this.cols; j++) {
-                this.grid[i].push(0);
-            }
-        }
+        this.grid = [ [0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 2, 0, 0, 0, 2],
+                      [2, 1, 2, 2, 2, 1, 0],
+                      [1, 2, 1, 1, 2, 1, 0],
+                      [1, 1, 1, 2, 1, 2, 0],
+                      [1, 2, 2, 1, 2, 1, 0],
+                    ];
+
     }
 
     public getCols() { return this.cols; }
@@ -41,7 +53,7 @@ export class Grid {
         this.countRound++;
             
         //Obtener la i posicion que inserta el jugador
-        const getLastPosI = this.getLastPos(colums);
+        const getLastPosI = this.getLastPositionOfColumns(colums);
 
         this.ValueI = getLastPosI;
         // impar toca el jugador 1 - par toca el jugador 2
@@ -55,7 +67,7 @@ export class Grid {
         this.saveLastPos[colums] = getLastPosI;
     }
 
-    private getLastPos(colums:number):number {
+    private getLastPositionOfColumns(colums:number):number {
         if(this.saveLastPos[colums] == null) {
             return 5;
         }else{

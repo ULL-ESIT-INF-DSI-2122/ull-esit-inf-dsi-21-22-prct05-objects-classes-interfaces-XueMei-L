@@ -2,7 +2,7 @@
 // import { expect } from 'chai';
 // import { Grid } from "../../src/ejercicio-2/grid";
 // import { Player } from "../../src/ejercicio-2/player";
-// import { GameConect4 } from "../../src/ejercicio-2/conect4";
+// import { GameConect4 } from "../../src/ejercicio-2/connect4";
 
 // describe('Tests for ejercicio-2 Conect 4', () =>{
 
