@@ -108,7 +108,6 @@ export class GameConect4 {
      */
     public gameWinner(posActualI:number, posActualJ:number):boolean {
         let winner:boolean = false;
-        let winnerToken:number = 0;
         let countToken:number;
 
         //hay que hacer 4 bucle for para comprobar
@@ -125,7 +124,7 @@ export class GameConect4 {
                     if(countToken==3) {
                         // console.log(`ying le 1`);
                         winner = true;
-                        winnerToken = this.grid.getGrid()[posActualI][posActualJ];
+                        // winnerToken = this.grid.getGrid()[posActualI][posActualJ];
                     }
                 }
             }else{

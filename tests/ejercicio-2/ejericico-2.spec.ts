@@ -43,29 +43,119 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
 
     describe('Tests for the class Conect4', () => { 
 
-        it('Nombre del jugador', () =>{
+        it('Existe una clase llamada GameConect4', () =>{
             expect(GameConect).not.to.be.null;
         });
-
-        it('Proceso de juego', () =>{
-            expect(GameConect.gamePlayConect4()).not.to.be.null;
-        });
-
-    });
-
-    describe('Tests for the class gameWinner', () => { 
 
         it('Existe un metodo para comprobar que haya encontrado el jugador ganado', () =>{
             expect(GameConect.gameWinner(4, 5)).not.to.be.null;
         });
 
     });
-    
-
-});
 
 
+    describe('Tests for the game process', () =>{
+        let regillaOrinal:number[][] = [    [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                        ];
 
-describe('Tests for ejercicio-2 Conect 4', () =>{
+        it('0. Regilla está vacía', () =>{
+            expect(grid.getGrid()).to.eqls(regillaOrinal);
+        });
+
+        let regillaRonda1:number[][] = [    [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 1, 0, 0, 0, 0, 0],
+                                        ];
+        
+        it('1. Jugador1 inserta ficha(1) en la regilla en la columna 1', () =>{
+            // Comproba que si es valido la columna
+            expect(grid.isValid(1)).to.eq(true);
+
+            // Ponser en la regilla la ficha y devuelve la posicion de fila
+            expect(grid.setPosAndGetI(1)).to.eq(5); // posicion [5][1]
+        });
+
+
+        it('>> Despues de insertar un jugador', () =>{
+            expect(grid.getGrid()).to.eqls(regillaRonda1);
+        });
+
+
+        it('2. Jugador2 inserta ficha(2) en la regilla en la columna 2', () =>{
+            expect(grid.isValid(2)).to.eq(true);
+            expect(grid.setPosAndGetI(2)).to.eq(5); //posicion [5][2]
+        });
+
+
+        it('3. Jugador1 inserta ficha(1) en la regilla en la columna 1', () =>{
+            expect(grid.isValid(2)).to.eq(true);
+            expect(grid.setPosAndGetI(2)).to.eq(4); 
+        });
+
+        
+        it('4. Jugador2 inserta ficha(2) en la regilla en la columna 3', () =>{
+            expect(grid.isValid(3)).to.eq(true);
+            expect(grid.setPosAndGetI(3)).to.eq(5); 
+        });
+
+
+        it('5. Jugador1 inserta ficha(1) en la regilla en la columna 3', () =>{
+            expect(grid.isValid(3)).to.eq(true);
+            expect(grid.setPosAndGetI(3)).to.eq(4); 
+        });
+
+
+        it('6. Jugador2 inserta ficha(2) en la regilla en la columna 4', () =>{
+            expect(grid.isValid(4)).to.eq(true);
+            expect(grid.setPosAndGetI(4)).to.eq(5); 
+        });
+
+        it('7. Jugador1 inserta ficha(1) en la regilla en la columna 3', () =>{
+            expect(grid.isValid(3)).to.eq(true);
+            expect(grid.setPosAndGetI(3)).to.eq(3); 
+        });
+
+        it('8. Jugador2 inserta ficha(2) en la regilla en la columna 4', () =>{
+            expect(grid.isValid(4)).to.eq(true);
+            expect(grid.setPosAndGetI(4)).to.eq(4); 
+        });
+
+        it('9. Jugador1 inserta ficha(2) en la regilla en la columna 4', () =>{
+            expect(grid.isValid(4)).to.eq(true);
+            expect(grid.setPosAndGetI(4)).to.eq(3); 
+        });
+
+        it('10. Jugador2 inserta ficha(2) en la regilla en la columna 5', () =>{
+            expect(grid.isValid(5)).to.eq(true);
+            expect(grid.setPosAndGetI(5)).to.eq(5); 
+        });
+
+        it('11. Jugador1 inserta ficha(2) en la regilla en la columna 4', () =>{
+            expect(grid.isValid(4)).to.eq(true);
+            expect(grid.setPosAndGetI(4)).to.eq(2); 
+        });
+
+        let regillaRonda11:number[][] = [   [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 0, 0, 0],
+                                            [0, 0, 0, 0, 1, 0, 0],
+                                            [0, 0, 0, 1, 1, 0, 0],
+                                            [0, 0, 1, 1, 2, 0, 0],
+                                            [0, 1, 2, 2, 2, 2, 0],
+                                        ];
+
+        it('>> Despues de insertar un jugador', () =>{
+            expect(grid.getGrid()).to.eqls(regillaRonda11);
+        });
+        
+
+    });
 
 });
