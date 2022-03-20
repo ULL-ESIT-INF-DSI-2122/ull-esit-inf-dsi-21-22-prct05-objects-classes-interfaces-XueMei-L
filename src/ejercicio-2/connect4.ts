@@ -27,8 +27,8 @@ export class GameConect4 {
         // while(winnerPlayerA == false && winnerPlayerB == false) {
         while(winnerPlayerA == false && winnerPlayerB == false && this.player1.getNumFichas() > 0 && this.player2.getNumFichas() > 0 ) {
 
-            console.log(`>> Rounda [${round}]\n`);
-
+            console.log(`>> Rounda [${round}] ----------------------------------------------------------\n`);
+            
             if(round % 2 != 0) {
                 console.log(`>> Hola jugador ${this.player1.getName()}. \n>> Ahora es su turno, qué columna quieres insertar una ficha?`);
                 
@@ -40,7 +40,6 @@ export class GameConect4 {
                     var colums = scanf('%d');
                     console.log(`>> Usted ha insertado una ficha en la columna ${colums}.`);
                     if(this.grid.isValid(colums)) {
-                        console.log(`-----------------------------------------------------------------------------------`);
                         console.log(`>> La columna ${colums} es valida`);
                         console.log(`>> El jugador ${this.player1.getName()} pone una ficha en la columa ${colums}`);
                         
@@ -68,7 +67,6 @@ export class GameConect4 {
                     console.log(`>> Usted ha insertado una ficha en la columna ${colums}.`);
 
                     if(this.grid.isValid(colums)) {
-                        console.log(`-----------------------------------------------------------------------------------`);
                         console.log(`>> La columna ${colums} es valida`);
                         console.log(`>> El jugador ${this.player2.getName()} pone una ficha en la columa ${colums}`);
                         
@@ -114,7 +112,6 @@ export class GameConect4 {
 
         //horizontal
         countToken = 0;
-        // console.log(`${grid.getCols()}`);
         for(let i:number = 0; i < this.grid.getCols()-1; i++) {
             if(this.grid.getGrid()[posActualI][i] == 0) {
                 continue;
@@ -122,9 +119,7 @@ export class GameConect4 {
                 if(this.grid.getGrid()[posActualI][i] == this.grid.getGrid()[posActualI][i+1]){
                     countToken++;
                     if(countToken==3) {
-                        // console.log(`ying le 1`);
                         winner = true;
-                        // winnerToken = this.grid.getGrid()[posActualI][posActualJ];
                     }
                 }
             }else{
@@ -141,7 +136,6 @@ export class GameConect4 {
                 if(this.grid.getGrid()[i][posActualJ] == this.grid.getGrid()[i+1][posActualJ]){
                     countToken++;
                     if(countToken==3) {
-                        // console.log(`ying le 2`);
                         winner = true;
                     }
                 }
@@ -153,7 +147,6 @@ export class GameConect4 {
 
         //diagonal izq
         countToken = 0;
-        // console.log(`I = ${posActualI} + J = ${posActualJ}`);
         let initCountPosI_izq:number = 0;
         let initCountPosJ_izq:number = posActualI + posActualJ;
         
@@ -161,20 +154,15 @@ export class GameConect4 {
         if(initCountPosJ_izq < this.grid.getRows()) {
             initCountPosI_izq = 0;
         }else{
-            // console.log(`zuo = ${initCountPosJ_izq}, cols = ${grid.getCols()}`);
             initCountPosI_izq = initCountPosJ_izq - this.grid.getRows();
             initCountPosJ_izq = this.grid.getCols()-1;
         }
-        // console.log(`kaishi = ${initCountPosI_izq} + kaishi = ${initCountPosJ_izq}`);
         for(let i:number = initCountPosI_izq, j:number = initCountPosJ_izq; i < this.grid.getRows()-1; i++, j--) {
-            // console.log(`wo zai I = ${i} + wo zai J = ${j}`);
             if(this.grid.getGrid()[i][j] == 0) {
                 continue;
             }else if(this.grid.getGrid()[i][j] == this.grid.getGrid()[i+1][j-1]) {
-                console.log(`jinru, token wei ${countToken}`);
                 countToken++;
                     if(countToken==3) {
-                        console.log(`ying le 3`);
                         winner = true;
                     }
             }else{
@@ -193,7 +181,6 @@ export class GameConect4 {
             }else if(this.grid.getGrid()[i][j] == this.grid.getGrid()[i+1][j+1]) {
                 countToken++;
                     if(countToken==3) {
-                        console.log(`ying le 4`);
                         winner = true;
                     }
             }else{
@@ -203,12 +190,3 @@ export class GameConect4 {
         return winner;
     }
 }
-                
-// let a:Player = new Player("Juan");
-// let b:Player = new Player("Ana");
-// let game = new GameConect4(a, b);
-// let grid = new Grid();
-
-// game.gamePlayConect4();
-// // game.gameWinner(2,5);
-// grid.showGrid();

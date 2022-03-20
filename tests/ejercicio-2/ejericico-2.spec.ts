@@ -51,10 +51,22 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
             expect(GameConect.gameWinner(4, 5)).not.to.be.null;
         });
 
+        it('Comprobar que existe el proceso, y entra el juego', () =>{
+            GameConect.gamePlayConect4();
+        });
+
     });
 
 
     describe('Tests for the game process', () =>{
+
+        const player1 = new Player("Juan");
+        const player2 = new Player("Pepe");
+
+        const grid = new Grid();
+
+        const GameConect = new GameConect4(player1, player2, grid);
+
         let regillaOrinal:number[][] = [    [0, 0, 0, 0, 0, 0, 0],
                                             [0, 0, 0, 0, 0, 0, 0],
                                             [0, 0, 0, 0, 0, 0, 0],
@@ -154,7 +166,7 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
         it('>> Despues de insertar un jugador', () =>{
             expect(grid.getGrid()).to.eqls(regillaRonda11);
         });
-        
+
 
     });
 
