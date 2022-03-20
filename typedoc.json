@@ -6,7 +6,8 @@
         "./src/ejercicio-1/pokedex.ts",
 
         "./src/ejercicio-2/grid.ts",
-        "./src/ejercicio-2/conect4.ts",
-        "./src/ejercicio-2/player.ts"
-    ]
+        "./src/ejercicio-2/connect4.ts",
+        "./src/ejercicio-2/player.ts",
+        "./src/ejercicio-2/ejercicio-2.ts"
+    ]        
 }

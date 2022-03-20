@@ -13,6 +13,9 @@ export class GameConect4 {
         this.grid = regilla;
     }
     
+    /**
+     * _Metodo que realiza el proceso de juego conecta 4_
+     */
     public gamePlayConect4() {
         // Game start
         console.log(`---------------------------------Bienvenido al juego Conecta 4-----------------------------`); 

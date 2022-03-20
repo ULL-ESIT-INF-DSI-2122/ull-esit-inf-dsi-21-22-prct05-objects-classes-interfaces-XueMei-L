@@ -41,8 +41,15 @@ export class Pokedex {
     getSpeed() { return this.info[2]; }
     getHP() { return this.info[3]; }
 
+    /**
+     * _Insertar la vida despues de cada batalla_
+     * @param Hp vida de cada pokemon
+     */
     setHp(Hp:number){ this.info[3] = Hp; }
 
+    /**
+     * _Metodo que muestra la informacion de cada pokemon_
+     */
     public showPokemon(){
         console.log(`>> Informacion de ` + this.getName() +
                   `\n>> Tipo: ` + this.getType() + 

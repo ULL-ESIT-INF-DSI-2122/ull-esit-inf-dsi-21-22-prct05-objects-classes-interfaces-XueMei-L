@@ -4,6 +4,11 @@ export class Combat {
     private pokemon1:Pokedex;
     private pokemon2:Pokedex;
 
+    /**
+     * _Constructor de la clase pokemon_
+     * @param pokemon1 pokemon1
+     * @param pokemon2 pokemon2
+     */
     constructor(pokemon1:Pokedex, pokemon2:Pokedex) {
         this.pokemon1 = pokemon1;
         this.pokemon2 = pokemon2;
@@ -62,6 +67,10 @@ export class Combat {
         return parseFloat(damage_total.toFixed(0));
     }
 
+    /**
+     * _Metodo que realiza el proceso de combate_
+     * @returns devuelve el ganador
+     */
     public start():string {
         console.log(`----------------------------Pokemon Game Start----------------------------\n`);
         console.log(`Historia temporal: 

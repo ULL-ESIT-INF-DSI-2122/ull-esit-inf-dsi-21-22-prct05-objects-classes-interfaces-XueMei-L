@@ -7,6 +7,9 @@ export class Grid {
     private countRound:number = 0;
     private ValueI:number = 0;
 
+    /**
+     * Constructor de la clase Grid
+     */
     constructor() {
         for(let i: number = 0; i < this.rows; i++) {
             this.grid[i] = [];
@@ -28,6 +31,10 @@ export class Grid {
         }
     }
 
+    /**
+     * _Metodo que comproba si la columna es valida para insertar_
+     * @param colums la columna que tiene que verificar
+     */
     public isValid(colums:number) :boolean {
         if(colums < this.getCols()) {
             if(this.grid[0][colums] == 0) {
@@ -42,6 +49,11 @@ export class Grid {
         }
     }
 
+    /**
+     * _Metodo que inserta la posicion_
+     * @param colums columna para comprobar
+     * @returns devulve la posicion i de la columna correpondiente
+     */
     public setPosAndGetI(colums:number):number{
         this.countRound++;
             
@@ -62,6 +74,10 @@ export class Grid {
         return this.ValueI;
     }
 
+    /**
+     * _Metodo que busca la ultima posicion i de la columna que corresponte_
+     * @param colums columna que verifica
+     */
     private getLastPositionOfColumns(colums:number):number {
         if(this.saveLastPos[colums] == null) {
             return 5;
