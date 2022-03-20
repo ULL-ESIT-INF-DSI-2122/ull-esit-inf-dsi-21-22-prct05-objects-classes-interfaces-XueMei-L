@@ -18,11 +18,6 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
         it('Existe una clase Grid', () => {
             expect(grid).not.to.be.null;
         });
-
-        it('Existe un metodo en la clase Grid llamado showGrid()', () => {
-            expect(grid.showGrid()).not.to.be.null;
-        });
-
         
     });
 
@@ -51,9 +46,9 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
             expect(GameConect.gameWinner(4, 5)).not.to.be.null;
         });
 
-        it('Comprobar que existe el proceso, y entra el juego', () =>{
-            GameConect.gamePlayConect4();
-        });
+        // it('Comprobar que existe el proceso, y entra el juego', () =>{
+        //     GameConect.gamePlayConect4();
+        // });
 
     });
 
@@ -96,7 +91,7 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
         });
 
 
-        it('>> Despues de insertar un jugador', () =>{
+        it('Mostrar regilla. Despues de insertar un jugador', () =>{
             expect(grid.getGrid()).to.eqls(regillaRonda1);
         });
 
@@ -163,7 +158,7 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
                                             [0, 1, 2, 2, 2, 2, 0],
                                         ];
 
-        it('>> Despues de insertar un jugador', () =>{
+        it('Mostrar regilla para comprobar resultado', () =>{
             expect(grid.getGrid()).to.eqls(regillaRonda11);
         });
 

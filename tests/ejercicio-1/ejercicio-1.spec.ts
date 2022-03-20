@@ -22,10 +22,10 @@ describe('Tests for POKEMON GAME', ()=>{
             expect(charizard).to.not.be.null;
         })
 
-        it('Existe la funcion showPokemon()', () => {
-            expect(pikachu.showPokemon()).to.not.be.null.to.eq(true);
-            expect(charizard.showPokemon()).to.not.be.null.to.eq(true);
-        });
+        // it('Existe la funcion showPokemon()', () => {
+        //     expect(pikachu.showPokemon()).to.not.be.null.to.eq(true);
+        //     expect(charizard.showPokemon()).to.not.be.null.to.eq(true);
+        // });
 
         describe('Tests para el objeto pikachu (class Pokedex)', () => {
             
