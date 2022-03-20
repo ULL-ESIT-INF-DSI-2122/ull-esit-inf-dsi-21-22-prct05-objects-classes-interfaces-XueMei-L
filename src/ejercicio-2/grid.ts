@@ -23,6 +23,7 @@ export class Grid {
     public getRows() { return this.rows; }
     public getValueI() { return this.ValueI; }
     public getGrid() { return this.grid; }
+    public setGrid(regilla:number[][]) { this.grid = regilla; }
 
     public showGrid() {
         console.log(`>> Mostrar Regilla`)

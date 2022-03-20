@@ -71,7 +71,7 @@ export class Combat {
      * _Metodo que realiza el proceso de combate_
      * @returns devuelve el ganador
      */
-    public start():string {
+    public start() {
         console.log(`----------------------------Pokemon Game Start----------------------------\n`);
         console.log(`Historia temporal: 
         Después de salir el bosque negro, tú con tú pokemon "${this.pokemon1.getName()}" estáis yendo 
@@ -117,6 +117,5 @@ export class Combat {
                 round++;
             }
         }
-        return this.pokemon1.getName();
     }
 }

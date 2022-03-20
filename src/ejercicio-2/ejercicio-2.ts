@@ -6,3 +6,4 @@ let a:Player = new Player("Juan");
 let b:Player = new Player("Ana");
 let grid = new Grid();
 let game = new GameConect4(a, b, grid);
+game.gamePlayConect4();

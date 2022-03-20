@@ -19,6 +19,11 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
             expect(grid).not.to.be.null;
         });
         
+        it('Existe un metodo showGrid()', () => {
+            expect(grid.showGrid()).not.to.be.null;
+        });
+
+        
     });
 
     describe('Tests for the class Player', () => { 
@@ -46,9 +51,9 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
             expect(GameConect.gameWinner(4, 5)).not.to.be.null;
         });
 
-        // it('Comprobar que existe el proceso, y entra el juego', () =>{
-        //     GameConect.gamePlayConect4();
-        // });
+        it('Comprobar que existe el proceso, y entra el juego', () =>{
+            GameConect.gamePlayConect4();
+        });
 
     });
 
@@ -59,8 +64,6 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
         const player2 = new Player("Pepe");
 
         const grid = new Grid();
-
-        const GameConect = new GameConect4(player1, player2, grid);
 
         let regillaOrinal:number[][] = [    [0, 0, 0, 0, 0, 0, 0],
                                             [0, 0, 0, 0, 0, 0, 0],
@@ -150,6 +153,10 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
             expect(grid.setPosAndGetI(4)).to.eq(2); 
         });
 
+        it('12. Invalido', () =>{
+            expect(grid.isValid(8)).to.eq(false);
+        });
+
         let regillaRonda11:number[][] = [   [0, 0, 0, 0, 0, 0, 0],
                                             [0, 0, 0, 0, 0, 0, 0],
                                             [0, 0, 0, 0, 1, 0, 0],
@@ -162,6 +169,74 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
             expect(grid.getGrid()).to.eqls(regillaRonda11);
         });
 
+
+        
+        let gridToCheck:number[][] = [  [0, 0, 0, 0, 2, 0, 0],
+                                        [0, 0, 0, 0, 1, 0, 0],
+                                        [0, 0, 0, 0, 1, 0, 0],
+                                        [0, 0, 0, 1, 1, 0, 0],
+                                        [0, 0, 1, 1, 2, 0, 0],
+                                        [0, 1, 2, 2, 2, 2, 0],
+                                    ];
+        it('set regilla', () =>{
+            grid.setGrid(gridToCheck);
+            expect(grid.isValid(4)).to.eq(false);
+        });
+        const GameConect1 = new GameConect4(player1, player2, grid);
+        it('set regilla', () =>{
+            expect(GameConect1.gameWinner(2,4)).to.eq(true);
+        });
+
+
+        let gridToCheckH:number[][] = [ [0, 0, 0, 0, 2, 0, 0],
+                                        [0, 0, 0, 0, 1, 0, 0],
+                                        [0, 0, 0, 0, 2, 0, 0],
+                                        [0, 1, 1, 1, 1, 0, 0],
+                                        [0, 2, 1, 1, 2, 0, 0],
+                                        [0, 1, 2, 2, 2, 2, 0],
+                                    ];
+        it('set regilla', () =>{
+            grid.setGrid(gridToCheckH);
+        });
+
+        const GameConect2 = new GameConect4(player1, player2, grid);
+        it('set regilla', () =>{
+            expect(GameConect2.gameWinner(3,1)).to.eq(true);
+        });
+
+
+        let gridToCheckV:number[][] = [ [0, 0, 0, 0, 2, 0, 0],
+                                        [0, 0, 0, 0, 1, 0, 0],
+                                        [0, 1, 0, 0, 2, 0, 0],
+                                        [0, 1, 2, 1, 1, 0, 0],
+                                        [0, 1, 1, 1, 2, 0, 0],
+                                        [0, 1, 2, 2, 2, 2, 0],
+                                    ];
+        it('set regilla', () =>{
+            grid.setGrid(gridToCheckV);
+        });
+
+        const GameConect3 = new GameConect4(player1, player2, grid);
+        it('set regilla', () =>{
+            expect(GameConect3.gameWinner(2,1)).to.eq(true);
+        });
+        
+        let gridToCheckD:number[][] = [ [0, 0, 0, 0, 2, 0, 0],
+                                        [0, 0, 0, 0, 1, 0, 0],
+                                        [0, 1, 0, 0, 2, 0, 0],
+                                        [0, 1, 1, 1, 1, 0, 0],
+                                        [0, 2, 2, 1, 2, 0, 0],
+                                        [0, 1, 2, 2, 1, 2, 0],
+                                    ];
+
+        it('set regilla', () =>{
+            grid.setGrid(gridToCheckD);
+        });
+
+        const GameConectD = new GameConect4(player1, player2, grid);
+        it('set regilla', () =>{
+            expect(GameConectD.gameWinner(3,2)).to.eq(true);
+        });
 
     });
 

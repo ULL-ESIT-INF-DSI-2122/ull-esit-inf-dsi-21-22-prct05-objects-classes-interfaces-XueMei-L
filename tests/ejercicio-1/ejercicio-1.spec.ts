@@ -7,10 +7,17 @@ import { Combat } from '../../src/ejercicio-1/combat';
 describe('Tests for POKEMON GAME', ()=>{
     
     const pikachu:Pokedex = new Pokedex("pikachu", 50, 45, "electric", [90, 55, 110, 60]);
+    const pikachu2:Pokedex = new Pokedex("pikachu", 50, 45, "electric", [90, 55, 110, 60]);
+    const bulbasaur:Pokedex = new Pokedex("bulbasaur", 50, 45, "grass", [49, 49, 45, 45]);
     const charizard:Pokedex = new Pokedex("charizard", 60, 55, "fire", [84, 78, 100, 78]);
+    const blastoise:Pokedex = new Pokedex("blastoise", 60, 55, "water", [83, 100, 78, 89]);
     
+
     let combat:Combat = new Combat(pikachu, charizard);
-    
+    let combat2:Combat = new Combat(pikachu, pikachu2);
+    let combat3:Combat = new Combat(charizard, bulbasaur);
+    let combat4:Combat = new Combat(charizard, blastoise);
+
     describe('Tests for the class Pokedex', () => {
 
         it('Existe una clase Pokedex', () => {
@@ -22,10 +29,10 @@ describe('Tests for POKEMON GAME', ()=>{
             expect(charizard).to.not.be.null;
         })
 
-        // it('Existe la funcion showPokemon()', () => {
-        //     expect(pikachu.showPokemon()).to.not.be.null.to.eq(true);
-        //     expect(charizard.showPokemon()).to.not.be.null.to.eq(true);
-        // });
+        it('Existe la funcion showPokemon()', () => {
+            expect(pikachu.showPokemon()).to.not.be.null.to.eq(true);
+            expect(charizard.showPokemon()).to.not.be.null.to.eq(true);
+        });
 
         describe('Tests para el objeto pikachu (class Pokedex)', () => {
             
@@ -105,6 +112,18 @@ describe('Tests for POKEMON GAME', ()=>{
 
             it('Combate entre pikachu y charizard, gana pikachu', () => {
                 expect(combat.start()).to.be.equal("pikachu");
+            });
+
+            it('Combate entre pikachu y pikachu2, gana pikachu', () => {
+                expect(combat2.start()).to.be.equal("pikachu");
+            });
+
+            it('Combate entre charizard y bulbasaur, gana bulbasaur', () => {
+                expect(combat3.start()).to.be.equal("bulbasaur");
+            });
+
+            it('Combate entre charizard y blastoise, gana blastoise', () => {
+                expect(combat4.start()).to.be.equal("blastoise");
             });
         });
     });
