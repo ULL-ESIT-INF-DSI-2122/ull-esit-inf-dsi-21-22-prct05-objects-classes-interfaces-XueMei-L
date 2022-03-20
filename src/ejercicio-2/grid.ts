@@ -19,11 +19,11 @@ export class Grid {
 
     // constructor() {
     //     this.grid = [ [0, 0, 0, 0, 0, 0, 0],
-    //                   [0, 0, 2, 0, 0, 0, 2],
-    //                   [2, 1, 2, 2, 2, 1, 0],
-    //                   [1, 2, 1, 1, 2, 1, 0],
-    //                   [1, 1, 1, 2, 1, 2, 0],
-    //                   [1, 2, 2, 1, 2, 1, 0],
+    //                   [0, 0, 0, 0, 0, 0, 0],
+    //                   [0, 0, 0, 0, 0, 1, 0],
+    //                   [0, 0, 1, 2, 1, 2, 0],
+    //                   [0, 1, 2, 1, 1, 2, 0],
+    //                   [0, 2, 1, 1, 2, 1, 0],
     //                 ];
 
     // }
@@ -41,10 +41,15 @@ export class Grid {
     }
 
     public isValid(colums:number) :boolean {
-        if(this.grid[0][colums] == 0) {
-            return true;
+        if(colums < this.getCols()) {
+            if(this.grid[0][colums] == 0) {
+                return true;
+            }else{
+                console.log(`>> Error, ${colums} está completa`);
+                return false;
+            }
         }else{
-            console.log(`Error, ${colums} está completa`);
+            console.log(`>> No es una columna valida, está fuera del rango`);
             return false;
         }
     }
@@ -54,7 +59,7 @@ export class Grid {
             
         //Obtener la i posicion que inserta el jugador
         const getLastPosI = this.getLastPositionOfColumns(colums);
-        console.log(`la ultima = ${getLastPosI}`);
+
         this.ValueI = getLastPosI;
         // impar toca el jugador 1 - par toca el jugador 2
             if(this.countRound % 2 != 0) {
