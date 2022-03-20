@@ -7,26 +7,26 @@ export class Grid {
     private countRound:number = 0;
     private ValueI:number = 0;
 
-    // constructor() {
-    //     for(let i: number = 0; i < this.rows; i++) {
-    //         this.grid[i] = [];
-    //         for(let j: number = 0; j < this.cols; j++) {
-    //             this.grid[i].push(0);
-    //         }
-    //     }
-    // }
-
-
     constructor() {
-        this.grid = [ [0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 2, 0, 0, 0, 2],
-                      [2, 1, 2, 2, 2, 1, 0],
-                      [1, 2, 1, 1, 2, 1, 0],
-                      [1, 1, 1, 2, 1, 2, 0],
-                      [1, 2, 2, 1, 2, 1, 0],
-                    ];
-
+        for(let i: number = 0; i < this.rows; i++) {
+            this.grid[i] = [];
+            for(let j: number = 0; j < this.cols; j++) {
+                this.grid[i].push(0);
+            }
+        }
     }
+
+
+    // constructor() {
+    //     this.grid = [ [0, 0, 0, 0, 0, 0, 0],
+    //                   [0, 0, 2, 0, 0, 0, 2],
+    //                   [2, 1, 2, 2, 2, 1, 0],
+    //                   [1, 2, 1, 1, 2, 1, 0],
+    //                   [1, 1, 1, 2, 1, 2, 0],
+    //                   [1, 2, 2, 1, 2, 1, 0],
+    //                 ];
+
+    // }
 
     public getCols() { return this.cols; }
     public getRows() { return this.rows; }
@@ -49,12 +49,12 @@ export class Grid {
         }
     }
 
-    public setPosAndGetI(colums:number) {
+    public setPosAndGetI(colums:number):number{
         this.countRound++;
             
         //Obtener la i posicion que inserta el jugador
         const getLastPosI = this.getLastPositionOfColumns(colums);
-
+        console.log(`la ultima = ${getLastPosI}`);
         this.ValueI = getLastPosI;
         // impar toca el jugador 1 - par toca el jugador 2
             if(this.countRound % 2 != 0) {
@@ -65,6 +65,8 @@ export class Grid {
 
         //Actualizar la ultima nueva posicion
         this.saveLastPos[colums] = getLastPosI;
+        // console.log(`la ultima = ${getLastPosI}`);
+        return this.ValueI;
     }
 
     private getLastPositionOfColumns(colums:number):number {

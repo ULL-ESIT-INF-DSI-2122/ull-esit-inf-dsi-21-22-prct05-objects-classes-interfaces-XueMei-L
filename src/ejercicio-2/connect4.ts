@@ -33,11 +33,10 @@ export class GameConect4 {
                 if(grid.isValid(colums)) {
                     console.log(`>> El jugador ${this.player1.getName()} pone una ficha en la columa ${colums+1}`);
                     console.log(`>> El jugador ${this.player1.getName()} queda ${this.player1.getNumFichas()} fichas.`);
-                    // Insertar la posicion
-                    grid.setPosAndGetI(colums);
 
                     //Pasar la poscion actual para analizar
-                    
+                    this.gameWinner(grid.setPosAndGetI(colums), colums);
+
                     // Disminuir el numero de fichas
                     this.player1.setNumFichas(this.player1.getNumFichas()-1);
                 }else{
@@ -47,14 +46,14 @@ export class GameConect4 {
                     round--;
                 }
             }else{
-
                 if(grid.isValid(colums)) {
                     console.log(`>> El jugador ${this.player2.getName()} pone una ficha en la columa ${colums+1}`);
                     console.log(`>> El jugador ${this.player2.getName()} queda ${this.player2.getNumFichas()} fichas.`);
                     // Insertar la posicion
-                    grid.setPosAndGetI(colums);
-                    
+                    console.log(`col = ${colums}`);
+
                     //Pasar la poscion actual para analizar
+                    this.gameWinner(grid.setPosAndGetI(colums), colums);
 
                     // Disminuir el numero de fichas
                     this.player2.setNumFichas(this.player2.getNumFichas()-1);
@@ -176,6 +175,13 @@ let a:Player = new Player("Juan");
 let b:Player = new Player("Ana");
 let game = new GameConect4(a, b);
 let grid = new Grid();
-game.gamePlayConect4();
-game.gameWinner(5,6);
-grid.showGrid();
+
+var scanf = require('scanf');
+console.log(`introduzca un numero`);
+var name = scanf('%s');
+console.log(`nombre es = ${name}`);
+
+
+// game.gamePlayConect4();
+// game.gameWinner(5,6);
+// grid.showGrid();
