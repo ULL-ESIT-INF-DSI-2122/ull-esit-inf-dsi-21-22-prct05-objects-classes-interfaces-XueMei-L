@@ -508,15 +508,14 @@ La siguiente es la demostracion de los tests para cada ejercicio.
 
 **JUEGO DE POKEMON**
 
-![test1](img/test1.png)
-![test2](img/test2.png) 
-![img](img/pikachu.png)
+![test1](img/pokemo.png)
+
 ![histroy](img/historia.png) 
 ![combate](img/combate.png)
 
 **JUEGO DE CONECT4**
 
-![test1](img/tests.png)
+![test1](img/eje2.png)
 
 ![test1](img/1.png)
 ![test1](img/2.png)
