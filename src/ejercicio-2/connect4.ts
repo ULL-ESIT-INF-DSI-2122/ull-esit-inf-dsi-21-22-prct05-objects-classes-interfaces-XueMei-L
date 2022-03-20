@@ -1,4 +1,3 @@
-import { TupleType } from "typedoc";
 import { Grid } from "./grid";
 import { Player } from "./player";
 
@@ -6,16 +5,19 @@ export class GameConect4 {
 
     private player1:Player;
     private player2:Player;
+    private grid:Grid;
 
-    constructor(jugador1:Player, jugador2:Player) {
+    constructor(jugador1:Player, jugador2:Player, regilla:Grid) {
         this.player1 = jugador1;
         this.player2 = jugador2;
+        this.grid = regilla;
     }
     
     public gamePlayConect4() {
         // Game start
         console.log(`---------------------------------Bienvenido al juego Conecta 4-----------------------------`); 
-        grid.showGrid();
+    
+        this.grid.showGrid();
         console.log(`\n>> Empieza el jugador "${this.player1.getName()}"`);
         let round:number = 1;
         let winnerPlayerA:boolean = false;
@@ -37,7 +39,7 @@ export class GameConect4 {
                     console.log(`>> Indica un numero entre 0-6`);
                     var colums = scanf('%d');
                     console.log(`>> Usted ha insertado una ficha en la columna ${colums}.`);
-                    if(grid.isValid(colums)) {
+                    if(this.grid.isValid(colums)) {
                         console.log(`-----------------------------------------------------------------------------------`);
                         console.log(`>> La columna ${colums} es valida`);
                         console.log(`>> El jugador ${this.player1.getName()} pone una ficha en la columa ${colums}`);
@@ -47,7 +49,7 @@ export class GameConect4 {
                         console.log(`>> El jugador ${this.player1.getName()} queda ${this.player1.getNumFichas()} fichas.`);
     
                         //Pasar la poscion actual para analizar
-                        winnerPlayerA = this.gameWinner(grid.setPosAndGetI(colums), colums);
+                        winnerPlayerA = this.gameWinner(this.grid.setPosAndGetI(colums), colums);
                         valido = true;
                     }else{
                         console.log(`>> El jugador debe volver a poner una ficha.`);
@@ -65,7 +67,7 @@ export class GameConect4 {
                     var colums = scanf('%d');
                     console.log(`>> Usted ha insertado una ficha en la columna ${colums}.`);
 
-                    if(grid.isValid(colums)) {
+                    if(this.grid.isValid(colums)) {
                         console.log(`-----------------------------------------------------------------------------------`);
                         console.log(`>> La columna ${colums} es valida`);
                         console.log(`>> El jugador ${this.player2.getName()} pone una ficha en la columa ${colums}`);
@@ -75,7 +77,7 @@ export class GameConect4 {
                         console.log(`>> El jugador ${this.player2.getName()} queda ${this.player2.getNumFichas()} fichas.`);
     
                         //Pasar la poscion actual para analizar
-                        winnerPlayerB = this.gameWinner(grid.setPosAndGetI(colums), colums);
+                        winnerPlayerB = this.gameWinner(this.grid.setPosAndGetI(colums), colums);
 
                         valido = true;
                     }else{
@@ -85,7 +87,7 @@ export class GameConect4 {
                 }
             }
             // Mostrar regilla cada vez;
-            grid.showGrid();
+            this.grid.showGrid();
 
             // Comprobar que haya ganado uno de ellos
             if(winnerPlayerA == true) {
@@ -114,16 +116,16 @@ export class GameConect4 {
         //horizontal
         countToken = 0;
         // console.log(`${grid.getCols()}`);
-        for(let i:number = 0; i < grid.getCols()-1; i++) {
-            if(grid.getGrid()[posActualI][i] == 0) {
+        for(let i:number = 0; i < this.grid.getCols()-1; i++) {
+            if(this.grid.getGrid()[posActualI][i] == 0) {
                 continue;
-            }else if(grid.getGrid()[posActualI][posActualJ] == grid.getGrid()[posActualI][i]) {
-                if(grid.getGrid()[posActualI][i] == grid.getGrid()[posActualI][i+1]){
+            }else if(this.grid.getGrid()[posActualI][posActualJ] == this.grid.getGrid()[posActualI][i]) {
+                if(this.grid.getGrid()[posActualI][i] == this.grid.getGrid()[posActualI][i+1]){
                     countToken++;
                     if(countToken==3) {
-                        console.log(`ying le 1`);
+                        // console.log(`ying le 1`);
                         winner = true;
-                        winnerToken = grid.getGrid()[posActualI][posActualJ];
+                        winnerToken = this.grid.getGrid()[posActualI][posActualJ];
                     }
                 }
             }else{
@@ -133,14 +135,14 @@ export class GameConect4 {
 
         //vertical
         countToken = 0;
-        for(let i:number = posActualI; i < grid.getRows()-1; i++) {
-            if(grid.getGrid()[i][posActualJ] == 0) {
+        for(let i:number = posActualI; i < this.grid.getRows()-1; i++) {
+            if(this.grid.getGrid()[i][posActualJ] == 0) {
                 continue;
-            }else if(grid.getGrid()[posActualI][posActualJ] == grid.getGrid()[i][posActualJ]) {
-                if(grid.getGrid()[i][posActualJ] == grid.getGrid()[i+1][posActualJ]){
+            }else if(this.grid.getGrid()[posActualI][posActualJ] == this.grid.getGrid()[i][posActualJ]) {
+                if(this.grid.getGrid()[i][posActualJ] == this.grid.getGrid()[i+1][posActualJ]){
                     countToken++;
                     if(countToken==3) {
-                        console.log(`ying le 2`);
+                        // console.log(`ying le 2`);
                         winner = true;
                     }
                 }
@@ -157,19 +159,19 @@ export class GameConect4 {
         let initCountPosJ_izq:number = posActualI + posActualJ;
         
         // Calcula la posicion diagonal inicial 
-        if(initCountPosJ_izq < grid.getRows()) {
+        if(initCountPosJ_izq < this.grid.getRows()) {
             initCountPosI_izq = 0;
         }else{
             // console.log(`zuo = ${initCountPosJ_izq}, cols = ${grid.getCols()}`);
-            initCountPosI_izq = initCountPosJ_izq - grid.getRows();
-            initCountPosJ_izq = grid.getCols()-1;
+            initCountPosI_izq = initCountPosJ_izq - this.grid.getRows();
+            initCountPosJ_izq = this.grid.getCols()-1;
         }
         // console.log(`kaishi = ${initCountPosI_izq} + kaishi = ${initCountPosJ_izq}`);
-        for(let i:number = initCountPosI_izq, j:number = initCountPosJ_izq; i < grid.getRows()-1; i++, j--) {
+        for(let i:number = initCountPosI_izq, j:number = initCountPosJ_izq; i < this.grid.getRows()-1; i++, j--) {
             // console.log(`wo zai I = ${i} + wo zai J = ${j}`);
-            if(grid.getGrid()[i][j] == 0) {
+            if(this.grid.getGrid()[i][j] == 0) {
                 continue;
-            }else if(grid.getGrid()[i][j] == grid.getGrid()[i+1][j-1]) {
+            }else if(this.grid.getGrid()[i][j] == this.grid.getGrid()[i+1][j-1]) {
                 console.log(`jinru, token wei ${countToken}`);
                 countToken++;
                     if(countToken==3) {
@@ -186,10 +188,10 @@ export class GameConect4 {
         countToken = 0;
         let initCountPosI_der:number = posActualI - Math.min(posActualI, posActualJ);
         let initCountPosJ_der:number = posActualJ - Math.min(posActualI, posActualJ);
-        for(let i:number = initCountPosI_der, j:number = initCountPosJ_der; i < grid.getRows()-1; i++, j++) {
-            if(grid.getGrid()[i][j] == 0) {
+        for(let i:number = initCountPosI_der, j:number = initCountPosJ_der; i < this.grid.getRows()-1; i++, j++) {
+            if(this.grid.getGrid()[i][j] == 0) {
                 continue;
-            }else if(grid.getGrid()[i][j] == grid.getGrid()[i+1][j+1]) {
+            }else if(this.grid.getGrid()[i][j] == this.grid.getGrid()[i+1][j+1]) {
                 countToken++;
                     if(countToken==3) {
                         console.log(`ying le 4`);
@@ -203,12 +205,11 @@ export class GameConect4 {
     }
 }
                 
-let a:Player = new Player("Juan");
-let b:Player = new Player("Ana");
-let game = new GameConect4(a, b);
-let grid = new Grid();
+// let a:Player = new Player("Juan");
+// let b:Player = new Player("Ana");
+// let game = new GameConect4(a, b);
+// let grid = new Grid();
 
-
-game.gamePlayConect4();
-// game.gameWinner(2,5);
-grid.showGrid();
+// game.gamePlayConect4();
+// // game.gameWinner(2,5);
+// grid.showGrid();

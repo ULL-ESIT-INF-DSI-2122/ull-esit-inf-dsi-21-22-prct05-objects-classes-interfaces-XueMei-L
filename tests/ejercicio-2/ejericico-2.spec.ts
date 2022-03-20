@@ -11,7 +11,7 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
 
     const grid = new Grid();
 
-    const GameConect = new GameConect4(player1, player2);
+    const GameConect = new GameConect4(player1, player2, grid);
 
     describe('Tests for the class Grid', () => {
 
@@ -60,5 +60,12 @@ describe('Tests for ejercicio-2 Conect 4', () =>{
         });
 
     });
+    
+
+});
+
+
+
+describe('Tests for ejercicio-2 Conect 4', () =>{
 
 });
